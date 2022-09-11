@@ -33,6 +33,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         [null, {\
           "packageLocation": "./",\
           "packageDependencies": [\
+            ["@mdi/js", "npm:7.0.96"],\
+            ["@mdi/react", "npm:1.6.1"],\
             ["@supabase/supabase-js", "npm:1.35.6"],\
             ["autoprefixer", "virtual:ea52bf1099fb956d3dd37b6ac466c50d14d72a65f7097e06ce1a662df5ecbdb691aa7dfcc5fa9aaad85bb720f4a3de92789bcae6139240f300062f170a7623a7#npm:10.4.8"],\
             ["eslint", "npm:8.23.0"],\
@@ -129,6 +131,25 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@humanwhocodes-object-schema-npm-1.2.1-eb622b5d0e-a824a1ec31.zip/node_modules/@humanwhocodes/object-schema/",\
           "packageDependencies": [\
             ["@humanwhocodes/object-schema", "npm:1.2.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@mdi/js", [\
+        ["npm:7.0.96", {\
+          "packageLocation": "./.yarn/cache/@mdi-js-npm-7.0.96-2cbb743e8b-4bcc4542a2.zip/node_modules/@mdi/js/",\
+          "packageDependencies": [\
+            ["@mdi/js", "npm:7.0.96"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@mdi/react", [\
+        ["npm:1.6.1", {\
+          "packageLocation": "./.yarn/cache/@mdi-react-npm-1.6.1-00754d4c4a-d0408c5fcc.zip/node_modules/@mdi/react/",\
+          "packageDependencies": [\
+            ["@mdi/react", "npm:1.6.1"],\
+            ["prop-types", "npm:15.8.1"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -2984,6 +3005,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",\
           "packageDependencies": [\
             ["nextjs-website", "workspace:."],\
+            ["@mdi/js", "npm:7.0.96"],\
+            ["@mdi/react", "npm:1.6.1"],\
             ["@supabase/supabase-js", "npm:1.35.6"],\
             ["autoprefixer", "virtual:ea52bf1099fb956d3dd37b6ac466c50d14d72a65f7097e06ce1a662df5ecbdb691aa7dfcc5fa9aaad85bb720f4a3de92789bcae6139240f300062f170a7623a7#npm:10.4.8"],\
             ["eslint", "npm:8.23.0"],\
