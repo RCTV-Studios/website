@@ -1,7 +1,8 @@
 import PublicLayout from "../components/Layouts/public";
 import Head from "next/head";
 import { supabase } from "../lib/client";
-import Link from "next/link";
+
+import LatestPosts from "../components/Home/LatestPosts";
 export default function Home({ data }) {
   return (
     <>
@@ -12,35 +13,14 @@ export default function Home({ data }) {
       </Head>
       <PublicLayout pageName={"Home"}>
         <main>
-          <div>
-            <p className="text-xl">Latest Posts</p>
-            <div>
-              <ul>
-                {data.map((post) => (
-                  <li key={post.id}>
-                    &bull;
-                    <Link href={`/post/${post.id}`}>
-                      <a className="text-red-500 hover:text-green-500">
-                        {post.title}
-                      </a>
-                    </Link>
-                    <p className="text-sm">
-                      Published: {""}
-                      {new Date(post.date_published).getMonth() + 1}/
-                      {new Date(post.date_published).getDate()}/
-                      {new Date(post.date_published).getFullYear()}
-                    </p>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+          <LatestPosts data={data} />
         </main>
       </PublicLayout>
     </>
   );
 }
-export async function getServerSideProps(context) {
+
+export async function getStaticProps() {
   const { data, error } = await supabase
     .from("posts")
     .select("id,title,date_published")

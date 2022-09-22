@@ -1,3 +1,4 @@
+import { data } from "autoprefixer";
 import PublicLayout from "../../components/Layouts/public";
 import { supabase } from "../../lib/client";
 export default function ViewPost({ data }) {
@@ -18,7 +19,7 @@ export default function ViewPost({ data }) {
   );
 }
 
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
   const { data, error } = await supabase
     .from("posts")
     .select("id,title,body,author,date_published")
@@ -36,5 +37,17 @@ export async function getServerSideProps(context) {
       data,
       error,
     },
+    revalidate: 10,
+  };
+}
+
+export async function getStaticPaths(context) {
+  const { data, error } = await supabase
+    .from("posts")
+    .select("id,title,body,author,date_published");
+  const paths = data.map((post) => `/post/${post.id}`);
+  return {
+    paths: paths,
+    fallback: false,
   };
 }
