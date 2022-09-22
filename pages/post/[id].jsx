@@ -44,10 +44,11 @@ export async function getStaticProps(context) {
 export async function getStaticPaths(context) {
   const { data, error } = await supabase
     .from("posts")
-    .select("id,title,body,author,date_published");
+    .select("id,title,body,author,date_published")
+    .limit(10); // only use SSG for the first 10 posts, then SSR the rest
   const paths = data.map((post) => `/post/${post.id}`);
   return {
     paths: paths,
-    fallback: false,
+    fallback: "blocking",
   };
 }

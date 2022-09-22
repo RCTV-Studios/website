@@ -25,7 +25,7 @@ export async function getStaticProps() {
     .from("posts")
     .select("id,title,date_published")
     .order("date_published", { ascending: false })
-    .limit(2);
+    .limit(5);
   // console.log({ data, error });
 
   return {
@@ -33,5 +33,6 @@ export async function getStaticProps() {
       data,
       error,
     },
+    revalidate: 60,
   };
 }
