@@ -1,6 +1,7 @@
 import Head from "next/head";
 import PostLayout from "../../components/Layouts/PostLayout";
 import { supabase } from "../../lib/client";
+import Link from "next/link";
 export default function ViewPost({ post }) {
   return (
     <>
@@ -18,6 +19,15 @@ export default function ViewPost({ post }) {
           </span>
           <span> by </span>
           <span>{post.author.name}.</span>
+          <p>
+            Posted in:{" "}
+            <span>
+              <Link href={`/${post.category}`}>
+                <a className="capitalize text-red-500">{post.category}</a>
+              </Link>
+              .
+            </span>{" "}
+          </p>
         </p>
         <p className="text-md text-justify">{post.body}</p>
       </PostLayout>
