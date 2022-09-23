@@ -14,7 +14,7 @@ export default function AdminDashboard({ user, token }) {
           sign out
         </button>
         <div>
-          logged in view
+          Successful Login!
           <p className="bg-red-300 first-line:text-xl font-bold">
             token <code className="font-normal text-md ">{token}</code>
           </p>

@@ -10,9 +10,9 @@ export default function AboutUs() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <PublicLayout pageName={"About Us"}>
-        <main>
-          <div className="grid h-screen place-items-center bg-blue-200">
-            <p className="font-bold text-5xl">About Us</p>
+        <main className="bg-slate-600 h-[85vh]">
+          <div>
+            <p className="text-white text-xl p-5">RCTV Studios is...</p>
           </div>
         </main>
       </PublicLayout>

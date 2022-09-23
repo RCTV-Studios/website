@@ -1,15 +1,21 @@
-import { useState, useEffect } from "react";
-import { useAuth } from "../../lib/auth";
-import { supabase } from "../../lib/client";
 import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
+import { supabase } from "../../lib/client";
 export default function AdminLogin() {
   const router = useRouter();
-  const { user, session } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  useEffect(() => {
+    if (loggedIn) {
+      router.push("/admin");
+    }
+  }, [loggedIn, router]);
 
   const handleLogin = async (email, password) => {
     const { error } = await supabase.auth.signIn({ email, password });
+    if (!error) setLoggedIn(true);
   };
 
   return (

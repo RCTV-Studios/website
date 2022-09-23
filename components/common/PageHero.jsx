@@ -17,5 +17,7 @@ export default function PageHero({ text, variant }) {
           </p>
         </div>
       );
+    case "none":
+      return <></>;
   }
 }

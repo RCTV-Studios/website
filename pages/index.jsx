@@ -2,8 +2,8 @@ import PublicLayout from "../components/Layouts/public";
 import Head from "next/head";
 import { supabase } from "../lib/client";
 
-import LatestPosts from "../components/Home/LatestPosts";
-export default function Home({ data }) {
+import LatestPostsComponent from "../components/Home/LatestPostsComponent";
+export default function Home({ latestPosts }) {
   return (
     <>
       <Head>
@@ -13,26 +13,25 @@ export default function Home({ data }) {
       </Head>
       <PublicLayout pageName={"Home"}>
         <main>
-          <LatestPosts data={data} />
+          <LatestPostsComponent posts={latestPosts} />
         </main>
       </PublicLayout>
     </>
   );
 }
 
-export async function getStaticProps() {
-  const { data, error } = await supabase
+export async function getServerSideProps() {
+  const { data: latestPosts, error } = await supabase
     .from("posts")
-    .select("id,title,date_published")
+    .select("slug,category,title,date_published")
     .order("date_published", { ascending: false })
     .limit(5);
   // console.log({ data, error });
 
   return {
     props: {
-      data,
+      latestPosts,
       error,
     },
-    revalidate: 60,
   };
 }
