@@ -16,7 +16,7 @@ function LatestPostsComponent({ posts }) {
       <div>
         <ul>
           {posts.map((post) => (
-            <li key={post.id}>
+            <li key={post.slug}>
               &bull;
               <Link href={`/${post.category}/${post.slug}`}>
                 <a className="text-red-500 hover:text-green-500">
