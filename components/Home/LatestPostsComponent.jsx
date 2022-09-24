@@ -1,6 +1,6 @@
 import Link from "next/link";
 function LatestPostsComponent({ posts }) {
-  if (!posts) {
+  if (!posts || posts.length == 0) {
     return (
       <>
         <div className="w-full bg-red-500 h-36 sm:h-16 text-center text-white text-4xl">
