@@ -20,7 +20,7 @@ export default function Home({ latestPosts }) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const { data: latestPosts, error } = await supabase
     .from("posts")
     .select("slug,category,title,date_published")

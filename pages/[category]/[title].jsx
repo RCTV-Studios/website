@@ -36,7 +36,7 @@ export default function ViewPost({ post }) {
   );
 }
 
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
   const { data: post, error: postError } = await supabase
     .from("posts")
     .select("slug,category,author(name,icon),title,body,date_published")
@@ -55,14 +55,14 @@ export async function getServerSideProps(context) {
   };
 }
 
-// export async function getStaticPaths(context) {
-//   const { data: posts, error } = await supabase
-//     .from("posts")
-//     .select("slug,category,author(name),title,body,date_published")
-//     .limit(10); // only use SSG for the first 10 posts, then SSR the rest
-//   const paths = posts.map((post) => `/${post.category}/${post.slug}`);
-//   return {
-//     paths: paths,
-//     fallback: "blocking",
-//   };
-// }
+export async function getStaticPaths(context) {
+  const { data: posts, error } = await supabase
+    .from("posts")
+    .select("slug,category,author(name),title,body,date_published")
+    .limit(10); // only use SSG for the first 10 posts, then SSR the rest
+  const paths = posts.map((post) => `/${post.category}/${post.slug}`);
+  return {
+    paths: paths,
+    fallback: "blocking",
+  };
+}
